@@ -1,0 +1,32 @@
+@import "tailwindcss";
+ 
+ 
+ 
+@font-face {
+ 
+  src: url('/fonts/Amiri-Bold.woff2') format('woff2'),
+       url('/fonts/Amiri-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Amiri', serif;
+  color: var(--foreground);
+  background: var(--background);
+  background-image: url('/BB.png');  
+  background-position: center;
+}
+@keyframes shine {
+  100% {
+    left: 200%;
+  }
+}
+
+@layer utilities {
+  .animate-shine {
+    animation: shine 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+

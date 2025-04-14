@@ -1,0 +1,105 @@
+import Image from "next/image";
+
+interface StoryCardProps {
+  title: string;
+  description: string;
+  bgImage: string;
+  overlayImage: string;
+  imagePosition?: "left" | "right";
+  overlayTop?: string; // تحديد موقع الصورة من الأعلى
+  overlayLeft?: string; // تحديد موقع الصورة من اليسار
+}
+
+const StoryCard = ({
+  title,
+  description,
+  bgImage,
+  overlayImage,
+  imagePosition = "left",
+  overlayTop = "30%", // قيمة افتراضية
+  overlayLeft = "50%", // قيمة افتراضية
+}: StoryCardProps) => (
+  <div
+    className={`relative mt-20 flex flex-col lg:flex-row ${
+      imagePosition === "right" ? "lg:flex-row-reverse" : ""
+    } items-center lg:items-start min-h-96`}
+  >
+    {/* Text Content */}
+    <div className="max-w-[700px] text-right lg:flex-1 lg:pr-8">
+      <h3 className="text-4xl font-amiri text-primary-dark">{title}</h3>
+      <p className="mt-4 text-2xl font-amiri text-primary-dark leading-9 max-w-[600px] ">
+        {description}
+      </p>
+      <button className="mt-6 w-[109px] h-[55px] bg-primary-green text-white text-2xl font-amiri rounded-lg hover:bg-[#2a4a2a] transition-colors">
+        رؤية
+      </button>
+    </div>
+
+    {/* Image Container */}
+    <div
+      className={`relative mt-8 lg:mt-0 lg:w-[600px] lg:flex-shrink-0 ${
+        imagePosition === "right" ? "lg:mr-[-75px]" : "lg:ml-[-75px]"
+      }`}
+    >
+      <Image
+        src={bgImage}
+        alt={title}
+        width={600}
+        height={650}
+        className="w-full h-auto"
+      />
+      {/* التحكم في موقع الصورة overlayImage */}
+      <Image
+        src={overlayImage}
+        alt="Overlay"
+        width={290}
+        height={300}
+        className="absolute w-[290px] h-[400px] object-cover"
+        style={{
+          top: overlayTop, // تحديد الموقع من الأعلى
+          left: overlayLeft, // تحديد الموقع من اليسار
+          transform: "translate(-50%, -50%)", // توسيط الصورة
+        }}
+      />
+    </div>
+  </div>
+);
+
+export default function StoriesSection() {
+  return (
+    <section className="relative w-full px-4 sm:px-8 lg:px-20">
+      <h2 className="text-3xl sm:text-4xl font-amiri font-bold text-primary-green text-center mb-16">
+        أقسام القصص
+      </h2>
+
+      <StoryCard
+        title="عودة الأمل"
+        description="قصص تحكي عن شجاعة البدايات الجديدة بعد الألم. حكايات لأشخاص وجدوا النور بعد الظلام، واستطاعوا بناء حياة مليئة بالأمل رغم كل الصعاب."
+        bgImage="/back.png"
+        overlayImage="/girl1.png"
+        overlayTop="40%" // تحديد موقع الصورة من الأعلى
+        overlayLeft="50%" // تحديد موقع الصورة من اليسار
+      />
+
+      <StoryCard
+        title="رسائل لم تُرسل"
+        description="كلمات بقيت حبيسة القلوب، وأسرار لم تجد طريقها لمن رحلوا قبل أن يسمعوها. بحب لم يُعترف به، وبشوق لا ينطفئ."
+        bgImage="/back2.png"
+        overlayImage="/girl2.png"
+        imagePosition="right"
+        overlayTop="62%" // تحديد موقع الصورة من الأعلى
+        overlayLeft="60%" // تحديد موقع الصورة من اليسار
+      />
+
+      <StoryCard
+        title="حكايات من الغربة"
+        description="قصص تروي تحديات التأقلم بعيدًا عن الوطن، وصراع الذكريات بين الماضي والحاضر."
+        bgImage="/back.png"
+        overlayImage="/garab.png"
+        overlayTop="33%" // تحديد موقع الصورة من الأعلى
+        overlayLeft="50%" // تحديد موقع الصورة من اليسار
+         
+      />
+    </section>
+  );
+}
