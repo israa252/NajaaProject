@@ -5,43 +5,44 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 const SLIDER_IMAGES = [
-  { src: "/img/Pic1.PNG", alt: "إسماعيل الغول-fit-300" },
-  { src: "/img/Pic2.PNG", alt: "يارا محمد عزات عبداللطيف-fit-300" },
+  { src: "/img/Pic1.PNG", alt: "إسماعيل الغول" },
+  { src: "/img/Pic2.PNG", alt: "يارا محمد عزات عبداللطيف" },
   { src: "/img/Pic3.PNG", alt: "لقطة شاشة" },
-  { src: "/img/Pic4.PNG", alt: "عليا ابو طاقية-fit-300" },
-  { src: "/img/Pic5.PNG", alt: "إسلام مفيد أبو سعدة-fit-300" },
-  { src: "/img/Pic6.PNG", alt: "إسلام مفيد أبو سعدة-fit-300" },
-  { src: "/img/Pic7.PNG", alt: "إسلام مفيد أبو سعدة-fit-300" },
-  { src: "/img/Pic8.PNG", alt: "إسلام مفيد أبو سعدة-fit-300" },
-  { src: "/img/Pic9.PNG", alt: "إسلام مفيد أبو سعدة-fit-300" },
-  { src: "/img/Pic10.PNG", alt: "إسلام مفيد أبو سعدة-fit-300" },
+  { src: "/img/Pic4.PNG", alt: "عليا أبو طاقية" },
+  { src: "/img/Pic5.PNG", alt: "إسلام مفيد أبو سعدة" },
+  { src: "/img/Pic6.PNG", alt: "صورة إضافية" },
+  { src: "/img/Pic7.PNG", alt: "صورة إضافية" },
+  { src: "/img/Pic8.PNG", alt: "صورة إضافية" },
+  { src: "/img/Pic9.PNG", alt: "صورة إضافية" },
+  { src: "/img/Pic10.PNG", alt: "صورة إضافية" },
 ];
 
 const SWIPER_CONFIG = {
-  slidesPerView:5, // تحديد عدد ثابت للشرائح
+  modules: [Autoplay],
+  slidesPerView: 5,
   spaceBetween: 0,
+  loop: true,
+  centeredSlides: false,
   autoplay: {
     delay: 2000,
     disableOnInteraction: false,
   },
-  loop: true,
-  centeredSlides: false, // إزالة المركزة
+  breakpoints: {
+    320: { slidesPerView: 2 },
+    640: { slidesPerView: 3 },
+    768: { slidesPerView: 4 },
+    1024: { slidesPerView: 5 },
+    1280: { slidesPerView: 6 },
+  },
 };
 
 export default function FullWidthSlider() {
   return (
-    <div className="absolute inset-x-0 top-[616px] h-[250px] w-full overflow-hidden">
-      <Swiper
-        modules={[Autoplay]}
-        className="h-full w-full"
-        {...SWIPER_CONFIG}
-      >
+    <div className="absolute inset-x-0 top-[616px] w-full overflow-hidden">
+      <Swiper {...SWIPER_CONFIG} className="h-[250px] w-full">
         {SLIDER_IMAGES.map((image, index) => (
-          <SwiperSlide 
-            key={`${image.alt}-${index}`}
-        
-          >
-            <SlideContent image={image} />
+          <SwiperSlide key={index}>
+            <SliderImage src={image.src} alt={image.alt} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -49,20 +50,19 @@ export default function FullWidthSlider() {
   );
 }
 
-type SlideContentProps = {
-  image: typeof SLIDER_IMAGES[number];
+type SliderImageProps = {
+  src: string;
+  alt: string;
 };
 
-function SlideContent({ image }: SlideContentProps) {
+function SliderImage({ src, alt }: SliderImageProps) {
   return (
-    <div 
-      className="relative h-full w-full  bg-cover bg-center"
-      style={{ 
-        backgroundImage: `url(${image.src})`,
-        aspectRatio: "1/1" // تحديد نسبة أبعاد ثابتة
-      }}
+    <div
+      className="relative h-full w-full bg-cover bg-center"
+      style={{ backgroundImage: `url(${src})` }}
+      aria-label={alt}
     >
-      <div className="absolute inset-0 bg-green-900/50" />
+      <div className="absolute inset-0 bg-green-900/40" />
     </div>
   );
 }

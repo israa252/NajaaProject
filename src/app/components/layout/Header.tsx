@@ -26,7 +26,7 @@ const Header = () => {
 
         {/* Join Button - Left aligned */}
         <div className="shrink-0">
-          <NavLink href="/contact">انضم إلينا</NavLink>
+          <NavLink href="/contact"> شاركنا قصتك    </NavLink>
         </div>
       </div>
     </header>

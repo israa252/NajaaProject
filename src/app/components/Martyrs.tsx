@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "../components/Button"; // استيراد الزر
 
 export default function Martyrs() {
   return (
@@ -16,14 +16,10 @@ export default function Martyrs() {
 
       {/* زر "أضف قصتك" */}
       <div className="flex justify-center mt-6 sm:mt-8">
-        <Link
-          href="/add-memory"
-          className="w-[150px] sm:w-[180px] lg:w-[200px] h-[50px] sm:h-[55px] lg:h-[60px] bg-[#365F36] rounded-[12px] sm:rounded-[16px] flex items-center justify-center"
-        >
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] leading-[20px] text-white font-normal">
-            أضف ذكراه
-          </span>
-        </Link>
+         
+         <Button href="/add-memory" variant="primary">
+          أضف ذكراه
+       </Button>
       </div>
     </div>
   );

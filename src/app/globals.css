@@ -2,20 +2,25 @@
  
  
  
-@font-face {
- 
-  src: url('/fonts/Amiri-Bold.woff2') format('woff2'),
-       url('/fonts/Amiri-Bold.ttf') format('truetype');
+/* @font-face {
+  font-family: 'Amiri', serif;
+  src: url('/najaa/public/fonts/Amiri/Amiri-Bold.ttf') format('woff2'),
+       url('/najaa/public/fonts/Amiri/Amiri-Regular.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
-}
+} */
 
 body {
   font-family: 'Amiri', serif;
+  /* src: url('/najaa/public/fonts/Amiri/Amiri-Regular.woff2') format('woff2'),
+       url('/najaa/public/fonts/Amiri/Amiri-Regular.ttf') format('truetype'); */
+  font-weight: bold;
+  font-style: normal;
   color: var(--foreground);
   background: var(--background);
-  background-image: url('/BB.png');  
-  background-position: center;
+  background-image: url('/BB1.png');  
+  
+   
 }
 @keyframes shine {
   100% {

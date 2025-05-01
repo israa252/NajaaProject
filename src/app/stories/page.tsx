@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-// import Header from "@/src/components/Header"
+import Header from "../components/layout/Header"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Footer from "../components/layout/Footer"
 
 interface StoryCardProps {
   title: string
@@ -14,6 +15,7 @@ interface StoryCardProps {
 }
 
 const StoryCard = ({ title, image, category, onClick }: StoryCardProps) => (
+  
   <div
     className="relative group w-full h-[689px] overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105 cursor-pointer"
     onClick={onClick}
@@ -85,7 +87,7 @@ export default function StoriesPage() {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
 
       <div className="container mx-auto px-4 py-10 text-right">
         <h1 className="text-3xl md:text-4xl font-bold text-green-900 mb-8 text-center font-amiri">قصصنا </h1>
@@ -136,6 +138,7 @@ export default function StoriesPage() {
           ))}
         </div>
       </div>
+      <Footer/>
     </>
   )
 }
